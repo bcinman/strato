@@ -22,6 +22,24 @@ class Router(object):
         route = Route(pattern, handler, methods=methods)
         self.routes.append(route)
     
+    def get(self, pattern, handler):
+        self.route(pattern, handler, methods=['GET'])
+
+    def post(self, pattern, handler):
+        self.route(pattern, handler, methods=['POST'])
+
+    def put(self, pattern, handler):
+        self.route(pattern, handler, methods=['PUT'])
+
+    def patch(self, pattern, handler):
+        self.route(pattern, handler, methods=['patch'])
+
+    def delete(self, pattern, handler):
+        self.route(pattern, handler, methods=['DELETE'])
+
+    def head(self, pattern, handler):
+        self.route(pattern, handler, methods=['HEAD'])
+
     def match(self, environ):
         """Matches the provided wsgi `environ` to first matching Route or 
         a generic 404 handler if no route is matched."""
