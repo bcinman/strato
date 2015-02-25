@@ -62,4 +62,6 @@ def response(body, status=200, content_type='text/plain', headers=None):
         headers = []
     headers.append(('Content-type', content_type))
     status = '{} {}'.format(status, STATUSES.get(status, ''))
+    if type(body) is str:
+        body = body.encode()
     return status, body, headers
