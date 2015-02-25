@@ -2,6 +2,7 @@ import re
 from wsgiref.simple_server import make_server
 from strato import Request
 from strato.route import Route
+from strato.response import text
 
 class Router(object):
     def __init__(self):
@@ -30,10 +31,9 @@ class Router(object):
                 return result
         return Router.not_found, {}
 
-    def not_found(environ, start_response):
+    def not_found(request):
         """Generic 404 handler"""
-        start_response('404', [('Content-type', 'text/plain')])
-        return "404 Not Found"
+        return text("404 Not Found", status=404)
 
     def run(self, port=4000):
         server = make_server('', port, self)
