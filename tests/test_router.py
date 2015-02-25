@@ -27,6 +27,7 @@ def test_routes_to_404_if_no_matching_route():
     matched_handler, _ = router.match(environ)
     assert matched_handler == Router.not_found
 
+# TODO: Figure out how to test WSGI applications
 # def test_wsgi_app():
 #     def index():
 #         return (200, 'Hello World', ('Content-type', 'text/plain'))

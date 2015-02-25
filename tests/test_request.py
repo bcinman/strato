@@ -26,17 +26,17 @@ def test_port():
 
 def test_query_string():
     assert request.query_string == None
-    request.env['QUERY_STRING'] = 'param=value'
+    request.environ['QUERY_STRING'] = 'param=value'
     assert request.query_string == 'param=value'
 
 def test_content_type():
     assert request.content_type == None
-    request.env['CONTENT_TYPE'] = 'text/plain'
+    request.environ['CONTENT_TYPE'] = 'text/plain'
     assert request.content_type == 'text/plain'
 
 def test_content_length():
     assert request.content_length == 0
-    request.env['CONTENT_LENGTH'] = '1024'
+    request.environ['CONTENT_LENGTH'] = '1024'
     assert request.content_length == 1024
 
 def test_params():

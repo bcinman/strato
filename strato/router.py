@@ -1,4 +1,5 @@
 import re
+from strato import Request
 from strato.route import Route
 
 class Router(object):
@@ -9,7 +10,15 @@ class Router(object):
         """WSGI app callable"""
         handler, params = self.match(environ)
         environ['strato.params'] = params
-        return handler(environ, start_response)
+        # Wrap the handler in a WSGI callable
+        def wrap_handler(handler):
+            def wrapped(environ, start_response):
+                request = Request(environ)
+                status, body, headers = handler(request)
+                start_response(status, headers)
+                return [body]
+            return wrapped
+        return wrap_handler(handler)
 
     def route(self, pattern, handler, methods=['GET']):
         """Append a Route to this router"""
@@ -29,3 +38,7 @@ class Router(object):
         """Generic 404 handler"""
         start_response('404', [('Content-type', 'text/plain')])
         return "404 Not Found"
+
+    def run(self, port=4000):
+        server = make_server('', port, self)
+        server.serve_forever()
