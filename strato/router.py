@@ -11,15 +11,10 @@ class Router(object):
         """WSGI app callable"""
         handler, params = self.match(environ)
         environ['strato.params'] = params
-        # Wrap the handler in a WSGI callable
-        def wrap_handler(handler):
-            def wrapped(environ, start_response):
-                request = Request(environ)
-                status, body, headers = handler(request)
-                start_response(status, headers)
-                return [body]
-            return wrapped
-        return wrap_handler(handler)
+        request = Request(environ)
+        status, body, headers = handler(request)
+        start_response(status, headers)
+        return [body]
 
     def route(self, pattern, handler, methods=['GET']):
         """Append a Route to this router"""
