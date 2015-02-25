@@ -32,7 +32,7 @@ class Router(object):
         self.route(pattern, handler, methods=['PUT'])
 
     def patch(self, pattern, handler):
-        self.route(pattern, handler, methods=['patch'])
+        self.route(pattern, handler, methods=['PATCH'])
 
     def delete(self, pattern, handler):
         self.route(pattern, handler, methods=['DELETE'])
