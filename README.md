@@ -1,6 +1,6 @@
 # Strato
 
-Strato is an experimental pythong web framework. Created solely for the purpose of learning and experimenting with web framework design. **This is not meant to be used in production.**
+Strato is an experimental python web framework. Created solely for the purpose of learning and experimenting with web framework design. **This is not meant to be used in production.**
 
 ## Installation
     $ pip install -e 'git+git://github.com/bcinman/strato.git#egg=Package'   
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 ```
 
 ## Handlers
-A handlers is any callable that takes a request argument and returns a 3-element tuple in the form of __(status, body, headers)__. The strato.response module contains helper methods to quickly create these responses:
+A handler is any callable that takes a request argument and returns a 3-element tuple in the form of __(status, body, headers)__. The strato.response module contains helper methods to quickly create these responses:
 ```python
 from strato.response import text, json, html
 
