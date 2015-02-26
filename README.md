@@ -52,6 +52,7 @@ def handler_404(request):
 ## TODO
 * Proper documentation.
 * `form` property on the Request object.
+* Provide an actual `Application()` object to handle configuration and middleware.
 
 ## Possible Improvements
 * Right now matching is only done on the method and path of the request. This could be expanded to match based on any request parameter such as hostname, subdomain, etc...
