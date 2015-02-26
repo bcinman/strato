@@ -46,8 +46,8 @@ def handler_json(request):
 
 These methods also accept a status code as an argument
 ```python    
-    def handler_404(request):
-        return text('Not Found', status=404)
+def handler_404(request):
+    return text('Not Found', status=404)
 ```
 ## TODO
 * Proper documentation.

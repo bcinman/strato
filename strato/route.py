@@ -14,7 +14,7 @@ class Route(object):
             if matcher:
                 return self.handler, matcher.groupdict()
         return False, None
-
+        
     def compile(pattern):
         """Compile the pattern into a regex object"""
         parser = re.compile(r'{(\w+)}')
