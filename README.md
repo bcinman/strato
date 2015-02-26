@@ -23,11 +23,11 @@ def new(request)
 
 router.get('/', index)
 router.get('/{name}', show)
-# Also available: post(), put(), patch(), delete(), head()
 
 if __name__ == '__main__':
     router.run(4000)
 ```
+You can route on other methods using `post()`, `put()`, `patch()`, `delete()`, and `head()`.
 
 ## Handlers
 A handler is any callable that takes a request argument and returns a 3-element tuple in the form of __(status, body, headers)__. The strato.response module contains helper methods to quickly create these responses:
