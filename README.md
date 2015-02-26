@@ -18,8 +18,12 @@ def index(request):
 def name(request):
     return text('Hello {}'.format(request.params['name']))
 
+def new(request)
+    return text('This is a post request')
+
 router.get('/', index)
 router.get('/{name}', show)
+# Also available: post(), put(), patch(), delete(), head()
 
 if __name__ == '__main__':
     router.run(4000)
@@ -47,6 +51,7 @@ These methods also accept a status code as an argument
 ```
 ## TODO
 * Proper documentation.
+* `form` property on the Request object.
 
 ## Possible Improvements
 * Right now matching is only done on the method and path of the request. This could be expanded to match based on any request parameter such as hostname, subdomain, etc...
