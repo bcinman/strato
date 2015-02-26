@@ -51,5 +51,7 @@ These methods also accept a status code as an argument
 ## Possible Improvements
 * Right now matching is only done on the method and path of the request. This could be expanded to match based on any request parameter such as hostname, subdomain, etc...
 * Allow for scoping routes. i.e:
-    with route.scope('/api') as api:
-        api.get('/users', get_users) # matches GET /api/users
+'''python
+  with route.scope('/api') as api:
+      api.get('/users', get_users) # matches GET /api/users
+'''
