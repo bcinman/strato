@@ -6,41 +6,45 @@ Strato is an experimental pythong web framework. Created solely for the purpose 
     $ pip install -e 'git+git://github.com/bcinman/strato.git#egg=Package'   
 
 ## Usage
-    from strato import Router
-    from strato.response import text
+```python
+from strato import Router
+from strato.response import text
 
-    router = Router()
+router = Router()
 
-    def index(request):
-        return text('Hello World!')
+def index(request):
+    return text('Hello World!')
 
-    def name(request):
-        return text('Hello {}'.format(request.params['name']))
+def name(request):
+    return text('Hello {}'.format(request.params['name']))
 
-    router.get('/', index)
-    router.get('/{name}', show)
+router.get('/', index)
+router.get('/{name}', show)
 
-    if __name__ == '__main__':
-        router.run(4000)
+if __name__ == '__main__':
+    router.run(4000)
+```
 
 ## Handlers
 A handlers is any callable that takes a request argument and returns a 3-element tuple in the form of __(status, body, headers)__. The strato.response module contains helper methods to quickly create these responses:
+```python
+from strato.response import text, json, html
 
-    from strato.response import text, json, html
+def handler_text(request):
+    return text('Hello World')
 
-    def handler_text(request):
-        return text('Hello World')
+def handler_json(request):
+    return json('{"hello": "world"}')
 
-    def handler_json(request):
-        return json('{"hello": "world"}')
-
-    def handler_json(request):
-        return html('<b>Hello World</b>')
+def handler_json(request):
+    return html('<b>Hello World</b>')
+```
 
 These methods also accept a status code as an argument
-    
+```python    
     def handler_404(request):
         return text('Not Found', status=404)
+```
 ## TODO
 * Proper documentation.
 
